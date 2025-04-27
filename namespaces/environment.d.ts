@@ -1,0 +1,17 @@
+namespace NodeJS {
+  interface ProcessEnv {
+    // TMDB API
+    EXPO_PUBLIC_TMDB_API_BASE_URL: string;
+    EXPO_PUBLIC_TMDB_API_VERSION: string;
+    EXPO_PUBLIC_TMDB_API_ACCESS_TOKEN: string;
+    // AppWrite
+    EXPO_PUBLIC_APPWRITE_API_BASE_URL: string;
+    EXPO_PUBLIC_APPWRITE_API_VERSION: string;
+    EXPO_PUBLIC_APPWRITE_PROJECT_ID: string;
+    EXPO_PUBLIC_APPWRITE_DATABASE_ID: string;
+    EXPO_PUBLIC_APPWRITE_COLLECTION_ID: string;
+    // Images
+    EXPO_PUBLIC_TMDB_MOVIE_POSTER_URL: string;
+    EXPO_PUBLIC_FALLBACK_POSTER_URL: string;
+  }
+}
