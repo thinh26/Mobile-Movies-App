@@ -40,6 +40,8 @@ app-example
 # my owns
 .vscode/*
 .expo/*
+package-lock.json
 ./package-lock.json
 package-lock.*
 ./package-lock.*
+.env
