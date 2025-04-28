@@ -45,3 +45,4 @@ package-lock.json
 package-lock.*
 ./package-lock.*
 .env
+android/app/mobile-movie-app.keystore
