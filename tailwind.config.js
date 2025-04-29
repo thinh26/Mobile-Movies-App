@@ -18,6 +18,11 @@ module.exports = {
         },
         accent: "#AB8BFF",
       },
+      fontFamily: {
+        dmRegular: ["DMSansRegular"],
+        dmBold: ["DMSansBold"],
+        dmSemiBold: ["DMSansSemiBold"]
+      },
     },
   },
   plugins: [],

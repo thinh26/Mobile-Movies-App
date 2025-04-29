@@ -1,4 +1,11 @@
-import { Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import React from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import useFetch from "@/services/useFetch";
@@ -13,6 +20,7 @@ import {
   formatTimeConversion,
   TimeFormatOption,
 } from "@/utils";
+import DMSans from "@/components/font/DMSans";
 
 const MovieInfo = ({
   label,
@@ -22,10 +30,10 @@ const MovieInfo = ({
   value?: string | number | null;
 }) => (
   <View className="flex-col items-start justify-center mt-5">
-    <Text className="text-light-200 font-normal text-sm">{label}</Text>
-    <Text className="text-light-100 font-bold text-sm mt-2">
+    <DMSans className="text-light-200 text-sm">{label}</DMSans>
+    <DMSans.Bold className="text-light-100 text-sm mt-2">
       {value || "N/A"}
-    </Text>
+    </DMSans.Bold>
   </View>
 );
 
@@ -60,22 +68,24 @@ const MovieDetails = () => {
         {/* Movie Detail Info */}
         <View className="flex-col items-start justify-center mt-5 px-5">
           {/* Movie Name */}
-          <Text className="text-white font-bold text-xl">{movie?.title}</Text>
+          <DMSans.Bold className="text-white text-xl">
+            {movie?.title}
+          </DMSans.Bold>
           {/* Release year and duration */}
           <View className="flex-row items-center gap-x-1 mt-2">
-            <Text className="text-light-200 text-sm">
+            <DMSans className="text-light-200 text-sm">
               {join(movieTime, " - ")}
-            </Text>
+            </DMSans>
           </View>
           {/* Rating */}
           <View className="flex-row items-center bg-dark-100 px-2 py-1 rounded-md gap-x-1 mt-2">
             <Image source={icons.star} className="size-4" />
-            <Text className="text-white font-bold text-xm">
+            <DMSans.Bold className="text-white text-xm">
               {Math.round(movie?.vote_average ?? 0)}/10
-            </Text>
-            <Text className="text-light-200 text-sm">
+            </DMSans.Bold>
+            <DMSans className="text-light-200 text-sm">
               ({movie?.vote_count} votes)
-            </Text>
+            </DMSans>
           </View>
           {/* Movies Overview */}
           <MovieInfo label="Overview" value={movie?.overview} />
@@ -128,7 +138,9 @@ const MovieDetails = () => {
           className="size-5 mr-1 mt-0.5 rotate-180"
           tintColor="#fff"
         />
-        <Text className="text-white font-semibold text-base">Go back</Text>
+        <DMSans.SemiBold className="text-white text-base">
+          Go back
+        </DMSans.SemiBold>
       </TouchableOpacity>
     </View>
   );

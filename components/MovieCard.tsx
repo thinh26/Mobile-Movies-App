@@ -1,6 +1,7 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, TouchableOpacity, Image } from "react-native";
 import { Link } from "expo-router";
 import { icons } from "@/constants/icons";
+import DMSans from "./font/DMSans";
 
 const MovieCard = ({
   id,
@@ -22,24 +23,24 @@ const MovieCard = ({
           className="w-full h-52 rounded-lg"
           resizeMode="cover"
         />
-        <Text
-          className="text-sm font-bold text-white mt-2 flex-1"
+        <DMSans.Bold
+          className="text-sm text-white mt-2 flex-1"
           numberOfLines={2}
         >
           {title}
-        </Text>
+        </DMSans.Bold>
         {/* Rating */}
         <View className="flex-row items-center justify-start gap-x-1">
           <Image source={icons.star} />
-          <Text className="text-xs text-white font-bold uppercase">
+          <DMSans.Bold className="text-xs text-white uppercase">
             {Math.round(vote_average)}
-          </Text>
+          </DMSans.Bold>
         </View>
         {/* Year of Release */}
         <View className="flex-row items-center justify-between">
-          <Text className="text-xs text-light-300 text-white">
+          <DMSans className="text-xs text-light-300">
             {release_date?.split("-")[0]}
-          </Text>
+          </DMSans>
         </View>
         {/*  */}
       </TouchableOpacity>

@@ -8,6 +8,7 @@ import { icons } from "@/constants/icons";
 import SearchBar from "@/components/SearchBar";
 import { updateSearchCount } from "@/services/appWrite";
 import size from "lodash/size";
+import DMSans from "@/components/font/DMSans";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -76,27 +77,27 @@ const Search = () => {
               />
             )}
             {moviesError && (
-              <Text className="text-red-500 px-5 my-3">
+              <DMSans className="text-red-500 px-5 my-3">
                 Error: {moviesError.message}
-              </Text>
+              </DMSans>
             )}
             {!moviesLoading &&
               !moviesError &&
               searchQuery.trim() &&
               size(movies) > 0 && (
-                <Text className="text-xl text-white font-bold">
+                <DMSans.Bold className="text-xl text-white">
                   Search result for{" "}
-                  <Text className="text-accent">{searchQuery}</Text>
-                </Text>
+                  <DMSans.Bold className="text-accent">{searchQuery}</DMSans.Bold>
+                </DMSans.Bold>
               )}
           </>
         }
         ListEmptyComponent={
           !moviesLoading && !moviesError ? (
             <View className="mt-10 px-5">
-              <Text className="text-center text-gray-500">
+              <DMSans className="text-center text-gray-500">
                 {searchQuery.trim() ? "No movies found" : "Search for a movie"}
-              </Text>
+              </DMSans>
             </View>
           ) : null
         }

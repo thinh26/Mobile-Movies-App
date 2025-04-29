@@ -15,6 +15,7 @@ import {
   Text,
   FlatList,
 } from "react-native";
+import DMSans from "@/components/font/DMSans";
 
 export default function Index() {
   const router = useRouter();
@@ -46,7 +47,7 @@ export default function Index() {
             className="mt-10 self-center"
           />
         ) : moviesError || trendingError ? (
-          <Text>Error: {moviesError?.message || trendingError?.message}</Text>
+          <DMSans>Error: {moviesError?.message || trendingError?.message}</DMSans>
         ) : (
           <View className="flex-1 mt-5">
             <SearchBar
@@ -55,9 +56,9 @@ export default function Index() {
             />
             {trendingMovies && (
               <View className="mt-10 ">
-                <Text className="text-lg text-white font-bold mt-5 mb-3">
+                <DMSans.Bold className="text-lg text-white mt-5 mb-3">
                   Trending Movies
-                </Text>
+                </DMSans.Bold>
                 <FlatList
                   horizontal
                   showsHorizontalScrollIndicator={false}
@@ -75,9 +76,9 @@ export default function Index() {
               </View>
             )}
             <>
-              <Text className="text-lg text-white font-bold mt-5 mb-3">
+              <DMSans.Bold className="text-lg text-white mt-5 mb-3">
                 Latest Movies
-              </Text>
+              </DMSans.Bold>
               <FlatList
                 data={movies}
                 renderItem={({ item }) => <MovieCard {...item} />}
