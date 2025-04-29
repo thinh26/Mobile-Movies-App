@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "expo-router";
 import MaskedView from "@react-native-masked-view/masked-view";
 import { images } from "@/constants/images";
+import DMSans from "./font/DMSans";
 
 const TrendingCard = ({
   movie: { movie_id, title, poster_url },
@@ -35,12 +36,12 @@ const TrendingCard = ({
               />
             </MaskedView>
           </View>
-          <Text
-            className="text-light-200 text-sm mt-2 font-bold"
+          <DMSans.Bold
+            className="text-light-200 text-sm mt-2"
             numberOfLines={2}
           >
             {title}
-          </Text>
+          </DMSans.Bold>
         </TouchableOpacity>
       </Link>
     </View>

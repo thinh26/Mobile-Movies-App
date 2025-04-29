@@ -3,6 +3,7 @@ import React from "react";
 import { Tabs } from "expo-router";
 import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
+import DMSans from "@/components/font/DMSans";
 
 const TabIcon = ({ focused, icon, title }: any) => {
   if (focused) {
@@ -12,9 +13,9 @@ const TabIcon = ({ focused, icon, title }: any) => {
         className="flex flex-row w-full flex-1 min-w-[112px] min-h-16 mt-4 justify-center items-center rounded-full overflow-hidden"
       >
         <Image source={icon} tintColor="#151132" className="size-5" />
-        <Text className="text-secondary text-base font-semibold ml-2">
+        <DMSans.SemiBold className="text-secondary text-base ml-2">
           {title}
-        </Text>
+        </DMSans.SemiBold>
       </ImageBackground>
     );
   }

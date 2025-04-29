@@ -12,7 +12,8 @@
     "lint": "expo lint",
     "prebuild": "expo prebuild",
     "aab-build": "react-native build-android --mode=release --verbose",
-    "apk-build": "expo run:android --variant release"
+    "apk-build": "expo run:android --variant release",
+    "build:android": "npm run prebuild && npm run apk-build"
   },
   "jest": {
     "preset": "jest-expo"
@@ -22,6 +23,7 @@
     "@react-native-masked-view/masked-view": "0.3.2",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
+    "clsx": "~2.1.1",
     "currency.js": "~2.0.4",
     "date-fns": "~4.1.0",
     "expo": "~52.0.46",
