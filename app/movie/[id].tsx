@@ -7,6 +7,12 @@ import { icons } from "@/constants/icons";
 import join from "lodash/join";
 import map from "lodash/map";
 import currency from "currency.js";
+import { getYear } from "date-fns/fp";
+import {
+  convertMinutesToHoursAndMinutes,
+  formatTimeConversion,
+  TimeFormatOption,
+} from "@/utils";
 
 const MovieInfo = ({
   label,
@@ -30,6 +36,14 @@ const MovieDetails = () => {
     fetchMovieDetails(id as string)
   );
 
+  const movieTime = [
+    getYear(movie?.release_date || "1970-01-01"),
+    formatTimeConversion(
+      convertMinutesToHoursAndMinutes(movie?.runtime),
+      TimeFormatOption.SHORT
+    ),
+  ];
+
   return (
     <View className="bg-primary flex-1">
       <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
@@ -47,13 +61,11 @@ const MovieDetails = () => {
         <View className="flex-col items-start justify-center mt-5 px-5">
           {/* Movie Name */}
           <Text className="text-white font-bold text-xl">{movie?.title}</Text>
+          {/* Release year and duration */}
           <View className="flex-row items-center gap-x-1 mt-2">
-            {/* Release year */}
             <Text className="text-light-200 text-sm">
-              {movie?.release_date.split("-")[0]}
+              {join(movieTime, " - ")}
             </Text>
-            {/* Duration */}
-            <Text className="text-light-200 text-sm">{movie?.runtime}m</Text>
           </View>
           {/* Rating */}
           <View className="flex-row items-center bg-dark-100 px-2 py-1 rounded-md gap-x-1 mt-2">

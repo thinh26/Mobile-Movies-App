@@ -10,8 +10,9 @@
     "web": "expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint",
-    "aab-build": "npx react-native build-android --mode=release --verbose",
-    "apk-build": "npx expo run:android --variant release"
+    "prebuild": "expo prebuild",
+    "aab-build": "react-native build-android --mode=release --verbose",
+    "apk-build": "expo run:android --variant release"
   },
   "jest": {
     "preset": "jest-expo"
@@ -22,6 +23,7 @@
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
     "currency.js": "~2.0.4",
+    "date-fns": "~4.1.0",
     "expo": "~52.0.46",
     "expo-blur": "~14.0.3",
     "expo-constants": "~17.0.8",
