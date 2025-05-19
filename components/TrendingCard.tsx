@@ -6,32 +6,32 @@ import { images } from "@/constants/images";
 
 const TrendingCard = ({
   movie: { movie_id, title, poster_url },
-  index,
+  index
 }: TrendingCardProps) => {
   return (
     <View>
       <Link
-        href={{ pathname: "/movie/[id]", params: { id: movie_id } }}
         asChild
+        href={{ pathname: "/movie/[id]", params: { id: movie_id } }}
       >
         <TouchableOpacity className="w-32 relative pl-5 flex-1">
           <Image
-            source={{ uri: poster_url }}
             className="w-32 h-48 rounded-lg "
             resizeMode="cover"
+            source={{ uri: poster_url }}
           />
           <View className="absolute bottom-9 -left-3.5 px-2 py-1 rounded-full">
             <MaskedView
-              maskElement={
+              maskElement={(
                 <Text className="text-white text-6xl font-bold">
                   {index + 1}
                 </Text>
-              }
+              )}
             >
               <Image
-                source={images.rankingGradient}
                 className="size-14"
                 resizeMode="cover"
+                source={images.rankingGradient}
               />
             </MaskedView>
           </View>

@@ -4,14 +4,14 @@ import { Tabs } from "expo-router";
 import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
 
-const TabIcon = ({ focused, icon, title }: any) => {
+const TabIcon = ({ focused, icon, title }: TabIconProps) => {
   if (focused) {
     return (
       <ImageBackground
-        source={images.highlight}
         className="flex flex-row w-full flex-1 min-w-[112px] min-h-16 mt-4 justify-center items-center rounded-full overflow-hidden"
+        source={images.highlight}
       >
-        <Image source={icon} tintColor="#151132" className="size-5" />
+        <Image className="size-5" source={icon} tintColor="#151132" />
         <Text className="text-secondary text-base font-semibold ml-2">
           {title}
         </Text>
@@ -21,7 +21,7 @@ const TabIcon = ({ focused, icon, title }: any) => {
 
   return (
     <View className="size-full justify-center items-center mt-4 rounded-full">
-      <Image source={icon} tintColor="#A8B5DB" className="size-5" />
+      <Image className="size-5" source={icon} tintColor="#A8B5DB" />
     </View>
   );
 };
@@ -35,7 +35,7 @@ const _Layout = () => {
           width: "100%",
           height: "100%",
           justifyContent: "center",
-          alignItems: "center",
+          alignItems: "center"
         },
         tabBarStyle: {
           backgroundColor: "#0f0D23",
@@ -47,7 +47,7 @@ const _Layout = () => {
           overflow: "hidden",
           borderWidth: 1,
           borderColor: "#0f0d23"
-        },
+        }
       }}
     >
       <Tabs.Screen
@@ -57,7 +57,7 @@ const _Layout = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} icon={icons.home} title="Home" />
-          ),
+          )
         }}
       />
       <Tabs.Screen
@@ -67,7 +67,7 @@ const _Layout = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} icon={icons.search} title="Search" />
-          ),
+          )
         }}
       />
       <Tabs.Screen
@@ -77,7 +77,7 @@ const _Layout = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} icon={icons.save} title="Saved" />
-          ),
+          )
         }}
       />
       <Tabs.Screen
@@ -87,7 +87,7 @@ const _Layout = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} icon={icons.person} title="Profile" />
-          ),
+          )
         }}
       />
     </Tabs>

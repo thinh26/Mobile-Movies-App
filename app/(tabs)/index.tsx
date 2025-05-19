@@ -13,7 +13,7 @@ import {
   ScrollView,
   ActivityIndicator,
   Text,
-  FlatList,
+  FlatList
 } from "react-native";
 
 export default function Index() {
@@ -21,29 +21,29 @@ export default function Index() {
   const {
     data: movies,
     loading: moviesLoading,
-    error: moviesError,
+    error: moviesError
   } = useFetch(() => fetchMovies({ query: "" }));
 
   const {
     data: trendingMovies,
     loading: trendingLoading,
-    error: trendingError,
+    error: trendingError
   } = useFetch(getTrendingMovies);
 
   return (
     <View className="flex-1 bg-primary">
-      <Image source={images.bg} className="absolute w-full z-0" />
+      <Image className="absolute w-full z-0" source={images.bg} />
       <ScrollView
         className="flex-1 px-5"
-        showsVerticalScrollIndicator={false}
         contentContainerStyle={{ minHeight: "100%", paddingBottom: 10 }}
+        showsVerticalScrollIndicator={false}
       >
-        <Image source={icons.logo} className="w-12 h-10 mt-20 mb-5 mx-auto" />
+        <Image className="w-12 h-10 mt-20 mb-5 mx-auto" source={icons.logo} />
         {moviesLoading || trendingLoading ? (
           <ActivityIndicator
-            size="large"
-            color="#0000ff"
             className="mt-10 self-center"
+            color="#0000ff"
+            size="large"
           />
         ) : moviesError || trendingError ? (
           <Text>Error: {moviesError?.message || trendingError?.message}</Text>
@@ -60,17 +60,17 @@ export default function Index() {
                 </Text>
                 <FlatList
                   horizontal
-                  showsHorizontalScrollIndicator={false}
                   className="mb-4 mt-3"
                   data={trendingMovies}
+                  ItemSeparatorComponent={() => <View className="w-4" />}
+                  keyExtractor={(item) => item.movie_id.toString()}
+                  showsHorizontalScrollIndicator={false}
                   contentContainerStyle={{
-                    gap: 26,
+                    gap: 26
                   }}
                   renderItem={({ item, index }) => (
-                    <TrendingCard movie={item} index={index} />
+                    <TrendingCard index={index} movie={item} />
                   )}
-                  keyExtractor={(item) => item.movie_id.toString()}
-                  ItemSeparatorComponent={() => <View className="w-4" />}
                 />
               </View>
             )}
@@ -79,18 +79,18 @@ export default function Index() {
                 Latest Movies
               </Text>
               <FlatList
+                className="mt-2 pb-32"
                 data={movies}
-                renderItem={({ item }) => <MovieCard {...item} />}
                 keyExtractor={(item) => item.id.toString()}
                 numColumns={3}
+                renderItem={({ item }) => <MovieCard {...item} />}
+                scrollEnabled={false}
                 columnWrapperStyle={{
                   justifyContent: "flex-start",
                   gap: 20,
                   paddingRight: 5,
-                  marginBottom: 10,
+                  marginBottom: 10
                 }}
-                className="mt-2 pb-32"
-                scrollEnabled={false}
               />
             </>
           </View>

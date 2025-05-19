@@ -7,20 +7,20 @@ const MovieCard = ({
   poster_path,
   title,
   vote_average,
-  release_date,
+  release_date
 }: Movie) => {
   return (
-    <Link href={{ pathname: "/movie/[id]", params: { id } }} asChild>
+    <Link asChild href={{ pathname: "/movie/[id]", params: { id } }}>
       <TouchableOpacity className="w-[30%]">
         {/* Movie info */}
         <Image
+          className="w-full h-52 rounded-lg"
+          resizeMode="cover"
           source={{
             uri: poster_path
               ? `${process.env.EXPO_PUBLIC_TMDB_MOVIE_POSTER_URL}${poster_path}`
-              : process.env.EXPO_PUBLIC_FALLBACK_POSTER_URL,
+              : process.env.EXPO_PUBLIC_FALLBACK_POSTER_URL
           }}
-          className="w-full h-52 rounded-lg"
-          resizeMode="cover"
         />
         <Text
           className="text-sm font-bold text-white mt-2 flex-1"
