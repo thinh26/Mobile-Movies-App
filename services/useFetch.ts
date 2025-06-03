@@ -2,13 +2,15 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 const useFetch = <T>(fetchFunction: () => Promise<T>, autoFetch = true) => {
   const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
   const fetchRef = useRef(fetchFunction);
+  const autoFetchRef = useRef(autoFetch);
 
   useEffect(() => {
     fetchRef.current = fetchFunction;
-  }, [fetchFunction]);
+    autoFetchRef.current = autoFetch;
+  }, [autoFetch, fetchFunction]);
 
   const fetchData = useCallback(async () => {
     try {
@@ -35,10 +37,10 @@ const useFetch = <T>(fetchFunction: () => Promise<T>, autoFetch = true) => {
   };
 
   useEffect(() => {
-    if (autoFetch) {
+    if (autoFetchRef.current) {
       void fetchData();
     }
-  }, [autoFetch, fetchData]);
+  }, [fetchData]);
 
   return { data, loading, error, refetch: fetchData, reset };
 };
