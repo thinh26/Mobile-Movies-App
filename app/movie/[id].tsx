@@ -24,7 +24,7 @@ import DMSans from "@/components/font/DMSans";
 
 const MovieInfo = ({
   label,
-  value,
+  value
 }: {
   label: string;
   value?: string | number | null;
@@ -40,7 +40,7 @@ const MovieInfo = ({
 const MovieDetails = () => {
   const router = useRouter();
   const { id } = useLocalSearchParams();
-  const { data: movie, loading } = useFetch(() =>
+  const { data: movie } = useFetch(() =>
     fetchMovieDetails(id as string)
   );
 
@@ -58,11 +58,11 @@ const MovieDetails = () => {
         {/* Movie Poster */}
         <View>
           <Image
-            source={{
-              uri: `${process.env.EXPO_PUBLIC_TMDB_MOVIE_POSTER_URL}${movie?.poster_path}`,
-            }}
             className="w-full h-[550px]"
             resizeMode="stretch"
+            source={{
+              uri: `${process.env.EXPO_PUBLIC_TMDB_MOVIE_POSTER_URL}${movie?.poster_path}`
+            }}
           />
         </View>
         {/* Movie Detail Info */}
@@ -79,7 +79,7 @@ const MovieDetails = () => {
           </View>
           {/* Rating */}
           <View className="flex-row items-center bg-dark-100 px-2 py-1 rounded-md gap-x-1 mt-2">
-            <Image source={icons.star} className="size-4" />
+            <Image className="size-4" source={icons.star} />
             <DMSans.Bold className="text-white text-xm">
               {Math.round(movie?.vote_average ?? 0)}/10
             </DMSans.Bold>
@@ -103,7 +103,7 @@ const MovieDetails = () => {
               label="Budget"
               value={`${currency(movie?.budget || 0, {
                 precision: 0,
-                symbol: "$",
+                symbol: "$"
               })
                 .divide(1_000_000)
                 .format()} million`}
@@ -112,7 +112,7 @@ const MovieDetails = () => {
               label="Revenue"
               value={`${currency(movie?.revenue || 0, {
                 precision: 3,
-                symbol: "$",
+                symbol: "$"
               })
                 .divide(1_000_000)
                 .format()}`}
@@ -134,8 +134,8 @@ const MovieDetails = () => {
         onPress={router.back}
       >
         <Image
-          source={icons.arrow}
           className="size-5 mr-1 mt-0.5 rotate-180"
+          source={icons.arrow}
           tintColor="#fff"
         />
         <DMSans.SemiBold className="text-white text-base">

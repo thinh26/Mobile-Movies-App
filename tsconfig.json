@@ -3,10 +3,11 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+      "@/*": ["./*"]
+    },
+    "module": "ESNext",
+    "target": "ESNext",
+    "types": ["@stylistic/eslint-plugin"],
   },
   "include": [
     "**/*.ts",
@@ -14,6 +15,8 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts",
-    "namespaces/environment.d.ts"
-  ]
+    "namespaces/environment.d.ts",
+    "eslint.config.mjs"
+  ],
+  "exclude": ["app-example"]
 }

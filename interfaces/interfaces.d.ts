@@ -3,7 +3,7 @@ interface Movie {
   title: string;
   adult: boolean;
   backdrop_path: string;
-  genre_ids: number[];
+  genre_ids: Array<number>;
   original_language: string;
   original_title: string;
   overview: string;
@@ -33,10 +33,10 @@ interface MovieDetails {
     backdrop_path: string;
   } | null;
   budget: number;
-  genres: {
+  genres: Array<{
     id: number;
     name: string;
-  }[];
+  }>;
   homepage: string | null;
   id: number;
   imdb_id: string | null;
@@ -45,24 +45,24 @@ interface MovieDetails {
   overview: string | null;
   popularity: number;
   poster_path: string | null;
-  production_companies: {
+  production_companies: Array<{
     id: number;
     logo_path: string | null;
     name: string;
     origin_country: string;
-  }[];
-  production_countries: {
+  }>;
+  production_countries: Array<{
     iso_3166_1: string;
     name: string;
-  }[];
+  }>;
   release_date: string;
   revenue: number;
   runtime: number | null;
-  spoken_languages: {
+  spoken_languages: Array<{
     english_name: string;
     iso_639_1: string;
     name: string;
-  }[];
+  }>;
   status: string;
   tagline: string | null;
   title: string;
@@ -74,4 +74,12 @@ interface MovieDetails {
 interface TrendingCardProps {
   movie: TrendingMovie;
   index: number;
+}
+
+interface SearchResultsParam {
+  searchQuery: string;
+  fetchFunction: () => Promise<void>;
+  data?: Array<Movie>;
+  dbFunction: () => Promise<void>;
+  resetFunction: () => void;
 }
