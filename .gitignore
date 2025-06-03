@@ -48,3 +48,4 @@ package-lock.*
 android/app/mobile-movie-app.keystore
 *.lock
 config/
+pnpm-lock.yaml
